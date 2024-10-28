@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dress Code Policy</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            color: #000;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+        }
+        .header img {
+            max-width: 150px;
+        }
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #002147;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #004a7c;
+            margin-top: 20px;
+        }
+        p, ul {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        .back-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .back-button button {
+            color: #0066cc;
+            text-decoration: none;
+            border: 1px solid #0066cc;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: transparent;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .back-button button:hover {
+            background-color: #0066cc;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="{% static 'images/BLUE.png' %}" alt="Lakshya Logo">
+    </div>
+
+    <div class="content">
+        <h1>Dress Code Policy</h1>
+
+        <h2>1. Applicability:</h2>
+        <p>All employees of Indian Institute of Commerce Lakshya</p>
+
+        <h2>2. Guidelines:</h2>
+        <ul>
+            <li>Monday to Friday: Business Formals</li>
+            <li>Saturday & Sunday: Business Casuals</li>
+        </ul>
+
+        <h2>2.1 Men</h2>
+        <ul>
+            <li>Business Formals – Trouser and collared shirt with formal shoes and belt.</li>
+            <li>Business Casual – T-shirts (Collared) with jeans. Round neck T-shirts with any slogans are not allowed - Sneakers/Sports shoes are allowed.</li>
+            <li>Footwear: Closed-toe formal shoes are allowed. Crocs, Sandals, or flip-flops are not allowed.</li>
+        </ul>
+
+        <h2>2.2 Women</h2>
+        <ul>
+            <li>Business Formals - Western Formals and Indian Formals also (Formal shirts, trousers & Kurthi’s are allowed). Sarees for women can also be considered appropriate.</li>
+            <li>Business Casuals – Jean with appropriate T-shirts (without any slogans) and tops. Sneakers/sports shoes are allowed.</li>
+            <li>Footwear: Closed-toe half shoes, and sandals are allowed. Crocs & flip-flops are not allowed.</li>
+        </ul>
+
+        <h2>3. Professionalism:</h2>
+        <p>Emphasize the importance of maintaining a professional appearance that reflects positively on the institute.</p>
+
+        <h2>4. Neat and Well-Groomed:</h2>
+        <p>During all work hours, employees have to appear in a neat and professional manner. Employees are expected to be suitably attired, well-groomed, and ensure that attire is clean and in good repair. All employees have to maintain appropriate hygiene standards, to include but not limited to, excessive personal odor and/or fragrance, ensuring personal physical cleanliness, etc.</p>
+
+        <h2>5. Other Important Aspects to Note:</h2>
+        <ul>
+            <li>Festival/Cultural attire is allowed only on authorized days based on officially declared festival/cultural dressing communication from the HR department.</li>
+            <li>It is mandatory to wear the business formals on official meetings or discussions.</li>
+            <li>Any exceptions to the business attire which are required for religious purposes or to honor cultural traditions need to be discussed with the HR Department.</li>
+        </ul>
+
+        <h2>6. Indiscipline and Breach Policy:</h2>
+        <p>An employee found inappropriately dressed shall be asked to leave the office premises by his/her reporting manager/HRD to change their attire and return. In case the employee doesn’t return to work within a reasonable period of time, they will be marked absent for the day. Repeated instances will invoke disciplinary action.</p>
+
+        <h2>Dress Code - Office Environment</h2>
+        <p>Below are some general guidelines for both men and women regarding what attire is appropriate.</p>
+
+        <h3>Clothing:</h3>
+        <ul>
+            <li><strong>Mon - Fri</strong>: Formal Shirt/Trouser/Indian Wear/Business Suit. For Ladies: Kurthi/tops, Skirt/Saree/Indian Dress.</li>
+            <li><strong>Inappropriate</strong>: Bicycle pants, Cargos Pants, Hoody, Sweatpants/Athletic Pants, Army Fatigues, Overalls, Low‐rise jeans or pants Jean.</li>
+            <li><strong>Sat - Sun</strong>: Golf/Polo Shirts, T‐Shirts (without slogans or pictures), Dresses, Tops, suits and skirts. (Saturday & Sundays Only)</li>
+            <li><strong>Inappropriate</strong>: Sweatshirts, Rugby Shirts, Mini Skirts, Ripped Jeans, Short dresses.</li>
+        </ul>
+
+        <h3>Shoes:</h3>
+        <ul>
+            <li><strong>Male</strong>: Formal Black or Brown shoes (Leather/Suede) - Monday – Friday. Casual Shoes on Saturday and Sunday.</li>
+            <li><strong>Female</strong>: Peep‐Toes, Closed Shoes, Buckled Scandal (Monday – Friday).</li>
+            <li><strong>Inappropriate</strong>: Flip Flops/Slip‐On, Sneakers, Crocs, Sandals & Floaters.</li>
+        </ul>
+
+        <!-- Back Button -->
+        <div class="back-button">
+            <button onclick="goBack()">Go Back</button>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

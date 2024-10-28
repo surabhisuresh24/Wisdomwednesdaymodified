@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            background-color: #ffffff;
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Ensure no horizontal overflow */
+        }
+
+        /* Header Section */
+        .header {
+            display: flex;
+            justify-content: center; /* Center align by default (mobile) */
+            align-items: center;
+            padding: 10px;
+            background-color: #ffffff; /* White background for the header */
+        }
+
+        /* Logo */
+        .logo {
+            max-width: 250px; /* Default size for desktop */
+            width: 100%;
+        }
+
+        /* Desktop-specific styles */
+        @media (min-width: 1025px) {
+            .header {
+                justify-content: flex-start; /* Align logo to the left on desktop */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                justify-content: center; /* Ensure horizontal center alignment on mobile */
+                padding: 20px 0; /* Add vertical padding to center align vertically */
+            }
+
+            .logo {
+                max-width: 220px; /* Slightly increase the logo size on mobile */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 30px 0; /* Further increase vertical padding for smaller screens */
+            }
+
+            .logo {
+                max-width: 200px; /* Further increase logo size for smaller mobile screens */
+            }
+        }
+
+        /* Gateway Section */
+        .gateway-section {
+            background-color: #173d69;
+            padding: 40px 20px;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Default styles (mobile and desktop) */
+        .gateway-section h2 {
+            font-size: 2em;
+            color: #fcb023;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: slideInLeft 1s ease-in-out forwards;
+        }
+
+        .gateway-section p {
+            font-size: 1.2em;
+            color: #e39d1c;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: slideInRight 1s ease-in-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        .gateway-image {
+            margin-top: 20px; /* Space between the text and image */
+            text-align: center;
+            opacity: 0; /* Start hidden */
+            animation: zoomFadeIn 2s ease-in-out forwards; /* Add animation */
+            animation-delay: 1s; /* Delay to start after text animations */
+        }
+
+        .gateway-image img {
+            max-width: 100%; /* Ensure the image scales down for smaller screens */
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Button Section */
+        .button-section {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #ffffff; /* Ensure it stands out from the blue section */
+        }
+
+        /* Adjust the Gateway Button */
+        .gateway-button {
+            background-color: #fcb023; /* Change the button color to yellow */
+            color: #fff;
+            padding: 15px 40px; /* Make the button larger */
+            font-size: 1.5em; /* Increase font size */
+            border-radius: 8px; /* Slightly larger border-radius */
+            transition: background-color 0.3s, transform 0.3s;
+            font-weight: bold;
+            display: inline-block;
+            text-decoration: none; /* Remove the underline */
+            animation: pulse 2s infinite; /* Add continuous pulse animation */
+        }
+
+        /* Button Hover Effect */
+        .gateway-button:hover {
+            background-color: #e8a52a;
+            transform: scale(1.05);
+        }
+
+        /* Pulse Animation */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(252, 176, 35, 0.7);
+            }
+
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(252, 176, 35, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(252, 176, 35, 0);
+            }
+        }
+
+        /* Mobile-specific adjustments */
+        @media (max-width: 768px) {
+            .gateway-button {
+                font-size: 1.2em; /* Slightly decrease font size on mobile */
+                padding: 10px 30px; /* Adjust padding for mobile */
+                width: auto; /* Ensure the button doesn't take up full width */
+            }
+        }
+
+        /* Keyframe Animations */
+        @keyframes slideInLeft {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* New Animation for Image */
+        @keyframes zoomFadeIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Main Content Container */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 20px;
+        }
+
+        /* Quote Section with Image */
+        .quote-section {
+            display: flex;
+            /* font-family: cursive; */
+            align-items: center;
+            justify-content: center;
+            color: #a6a2a2;
+            font-size: 1.5em;
+            margin-bottom: 60px;
+            position: relative;
+            text-align: center;
+            opacity: 0;
+            animation: fadeInUp 2s ease-in-out forwards;
+            animation-delay: 1s;
+            overflow-x: hidden; /* Prevent overflow */
+            flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+        }
+
+        .quote-image {
+            flex: 1;
+            max-width: 30%; /* Ensure the image scales properly */
+            margin-right: 40px;
+            box-sizing: border-box;
+        }
+
+        .quote-content {
+            flex: 2;
+            position: relative;
+            text-align: center;
+            overflow-wrap: break-word; /* Ensure text wraps properly */
+            box-sizing: border-box;
+            padding: 0 15px; /* Add padding to avoid content touching the edges */
+        }
+
+        .quote-marks.top-quote {
+            font-size: 4em;
+            color: #ffffff;
+            position: absolute;
+            top: -20px;
+            left: 0; /* Move the quotation mark away from the image */
+        }
+
+        .quote-marks.bottom-quote {
+            font-size: 2em;
+            color: #203869;
+            position: absolute;
+            bottom: -40px;
+            right: 0;
+        }
+
+        .quote-text {
+            margin: 0 auto;
+            /* font-family: cursive; */
+            max-width: 100%; /* Make sure it doesn't exceed container width */
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .quote-author {
+            display: block;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #000000; /* Changed to yellow for better visibility */
+            margin-top: 20px;
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        /* Desktop-specific styles */
+        @media (min-width: 1025px) {
+            .quote-text {
+                font-size: 2.5em; /* Increase the font size for desktop */
+                line-height: 1.3; 
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            }
+
+            .quote-author {
+                font-size: 1.5em; /* Increase the font size for the author */
+            }
+        }
+
+        /* Mobile-specific adjustments */
+        @media (max-width: 768px) {
+            .quote-section {
+                flex-direction: column; /* Stack content vertically */
+                align-items: center;
+                text-align: center;
+                padding: 10px; /* Add some padding to ensure content is not touching the edges */
+            }
+
+            .quote-image {
+                margin-bottom: 20px; /* Add some space between the image and text */
+            }
+
+            .quote-content {
+                padding: 0; /* Reset padding for mobile */
+            }
+        }
+
+        /* Pyramid Layout for Vision, Mission, Core Values Section */
+        .pyramid-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            margin-bottom: 80px; /* Add more space after the pyramid section */
+        }
+
+        .pyramid-top,
+        .pyramid-row .info-box {
+            transform: scale(0.9);
+            opacity: 0;
+            animation: scaleUpFadeIn 1s ease-in-out forwards;
+        }
+
+        .pyramid-top,
+        .pyramid-row .info-box {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes scaleUpFadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .pyramid-top {
+            text-align: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .pyramid-top .info-box {
+            width: 45%; /* Ensure the Vision box is the same width as the Mission and Core Values boxes */
+            margin: 0 auto;
+        }
+
+        .pyramid-row {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .pyramid-row .info-box {
+            flex: 1;
+            margin: 0 10px;
+            text-align: center;
+        }
+
+        .info-box {
+            background-color: #173d69;
+            padding: 20px;
+            border-radius: 10px;
+            color: #fff;
+            transition: background-color 0.3s, transform 0.3s;
+            letter-spacing: 0.5px; /* Added spacing between letters for better readability */
+            line-height: 1.6; /* Increased line height for better spacing */
+        }
+
+        .info-box h2 {
+            font-size: 1.8em; /* Increased font size for headings */
+            margin-bottom: 15px; /* Added margin below the heading */
+            letter-spacing: 1px; /* Added letter-spacing to the headings */
+        }
+
+        .info-box p,
+        .info-box ul {
+            font-size: 1.1em; /* Slightly increased font size for text */
+            letter-spacing: 0.7px; /* Added letter-spacing to the text */
+            margin-bottom: 10px;
+        }
+
+        .info-box ul {
+            padding-left: 20px;
+            list-style: disc;
+            text-align: left;
+        }
+
+        .info-box ul li {
+            margin-bottom: 10px; /* Added spacing between list items */
+        }
+
+        /* Apply hover effect to Vision, Mission, and Core Values sections */
+        .pyramid-top .info-box:hover,
+        .pyramid-row .info-box:hover {
+            background-color: #0e243d;
+            transform: scale(1.05);
+        }
+
+        /* Footer Modules */
+        .footer-modules {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px; /* Increase padding for a larger appearance */
+            background-color: #173d69;
+            border-radius: 10px;
+            margin: 20px auto 0 auto;
+            max-width: 1000px;
+            width: 100%;
+            box-sizing: border-box;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 2s ease-in-out forwards; /* Add fade-in animation */
+            animation-delay: 1s; /* Delay animation slightly for a smoother effect */
+        }
+
+        .footer-box {
+            text-align: center;
+            background-color: #173d69;
+            padding: 30px; /* Increase padding for a larger appearance */
+            border-radius: 10px;
+            margin: 20px;
+            transition: background-color 0.3s, transform 0.3s;
+            flex: 1;
+            box-sizing: border-box;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-in-out forwards; /* Add fade-in animation */
+            animation-delay: 1.2s; /* Delay animation slightly */
+        }
+
+        .footer-box:hover {
+            background-color: #0e243d;
+            transform: scale(1.05);
+        }
+
+        .footer-box h3 {
+            color: #e8a52a;
+            font-size: 1.7em; /* Increase font size for heading */
+        }
+
+        .module-description {
+            font-size: 1.2em; /* Increase font size for description */
+            color: #ffffff;
+            margin-bottom: 20px; /* Increase space between description and button */
+        }
+
+        .footer-button {
+            background-color: #e8a52a;
+            color: #ffffff;
+            padding: 15px 25px; /* Increase button padding for a larger appearance */
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            display: inline-block;
+            width: auto;
+            box-sizing: border-box;
+            font-size: 1.2em; /* Increase button font size */
+            font-weight: bold;
+        }
+
+        .footer-button:hover {
+            background-color: #e69500;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        /* Mobile-specific adjustments */
+        @media (max-width: 768px) {
+            .footer-modules {
+                flex-direction: column;
+                padding: 20px;
+                margin: 20px auto 0 auto;
+            }
+
+            .footer-box {
+                margin: 20px 0; /* Increase margin for better spacing */
+                padding: 30px; /* Increase padding for a larger appearance */
+            }
+
+            .footer-box h3 {
+                font-size: 1.8em; /* Further increase font size on mobile */
+            }
+
+            .module-description {
+                font-size: 1.3em; /* Increase font size for description on mobile */
+            }
+
+            .footer-button {
+                font-size: 1.3em; /* Further increase button font size */
+                padding: 20px 30px; /* Increase padding for a larger button */
+            }
+        }
+
+        /* Animation for Footer Modules */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* New Footer Section */
+        .footer {
+            background-color: #173d69;
+            padding: 20px 0;
+            color: #fff;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        @media (max-width: 1024px) {
+            .main-content {
+                padding: 10px;
+            }
+
+            .pyramid-row {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pyramid-row .info-box {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+
+            .pyramid-top .info-box {
+                width: 80%;
+                margin-bottom: 20px; /* Added margin to balance the layout */
+            }
+
+            .footer-modules {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .footer-box {
+                margin: 10px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                justify-content: center; /* Ensure horizontal center alignment on mobile */
+                padding: 20px 0; /* Add vertical padding to center align vertically */
+            }
+
+            .logo {
+                max-width: 220px; /* Slightly increase the logo size on mobile */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 30px 0; /* Further increase vertical padding for smaller screens */
+            }
+
+            .logo {
+                max-width: 200px; /* Further increase logo size for smaller mobile screens */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <img src="{% static 'images/BLUE.png' %}" alt="Logo" class="logo">
+    </div>
+
+    <!-- Gateway Section -->
+    <div class="gateway-section">
+        <h2>Gateway to Wisdom Wednesday</h2>
+        <p>Discover insightful articles and updates every week. Join us on our journey of knowledge and growth.</p>
+        <div class="gateway-image">
+            <img src="{% static 'images/try1.webp' %}" alt="Additional Image">
+        </div>
+    </div>
+
+    <!-- New Button Section -->
+    <div class="button-section">
+        <a href="{% url 'details' %}" class="gateway-button">Dive Into Wisdom Wednesday</a>
+    </div>
+
+    <div class="main-content">
+        <!-- Quote Section -->
+        <div class="quote-section">
+            <img src="{% static 'images/giphy1.gif' %}" alt="Quote Image" class="quote-image">
+            <div class="quote-content">
+                <div class="quote-marks top-quote">“</div>
+                <blockquote class="quote-text">{{ latest_quote.text }}</blockquote>
+                <cite class="quote-author">- {{ latest_quote.author }}</cite>
+
+                <div class="quote-marks bottom-quote">”</div>
+            </div>
+        </div>
+
+        <!-- Pyramid Layout for Vision, Mission, Core Values Section -->
+        <div class="pyramid-container">
+            <div class="pyramid-top">
+                <div class="info-box vision">
+                    <h2>VISION</h2>
+                    <p>Lakshyan in Every Global Brand</p>
+                </div>
+            </div>
+            <div class="pyramid-row">
+                <div class="info-box mission">
+                    <h2>MISSION</h2>
+                    <p>To Transform Lives Through Affordable, Quality & Value-based Education.</p>
+                </div>
+                <div class="info-box core-values">
+                    <h2>CORE VALUES</h2>
+                    <ul>
+                        <li>Passion Towards Work</li>
+                        <li>Respect for People</li>
+                        <li>Integrity in Every Transaction</li>
+                        <li>Dedication for Result</li>
+                        <li>Empowerment for Development</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="button-section">
+            <a href="{% url 'details' %}" class="gateway-button">Dive Into Wisdom Wednesday</a>
+        </div>
+
+        <!-- Footer Modules -->
+        <div class="footer-modules">
+            <div class="footer-box">
+                <h3>IT</h3>
+                <p class="module-description">Dive into the IT policies</p>
+                <a href="{% url 'it_policies' %}" class="footer-button">Go to IT</a>
+            </div>
+            <div class="footer-box">
+                <h3>HR</h3>
+                <p class="module-description">Explore the HR policies</p>
+                <a href="{% url 'hr_policies' %}" class="footer-button">Go to HR</a>
+            </div>
+            <div class="footer-box">
+                <h3>Courses</h3>
+                <p class="module-description">Check out courses offered by Lakshya</p>
+                <a href="{% url 'courses' %}" class="footer-button">Go to Courses</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <p>© 2024 All rights reserved with Learnfluence Private Limited</p>
+    </div>
+</body>
+
+</html>

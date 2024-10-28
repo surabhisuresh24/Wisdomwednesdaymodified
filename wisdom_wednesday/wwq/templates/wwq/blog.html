@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            background-color: #f9fafb;
+            color: #333;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #dcdcdc;
+            transition: box-shadow 0.3s ease;
+            border-radius: 0 0 10px 10px;
+            position: fixed; /* Freeze the logo section */
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000; /* Ensure it's above the content */
+        }
+
+        .logo-container img {
+            height: 60px;
+            width: auto;
+        }
+
+        .logo-container:hover {
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 20px 30px; /* Add padding-top to account for fixed header */
+            background: linear-gradient(135deg, #1b3b73, #123157);
+            color: #ffffff;
+            text-align: center;
+            border-bottom: 4px solid #0d2347;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeInSlideUp 1.5s ease-out forwards;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            max-width: 90%;
+            opacity: 0;
+            animation: fadeInSlideUp 2s ease-out forwards;
+            animation-delay: 0.5s;
+            line-height: 1.8;
+            color: #e0e0e0;
+        }
+
+        @keyframes fadeInSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            padding: 30px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .latest-content {
+            flex: 2;
+            margin-right: 20px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e0e0e0;
+        }
+
+        .latest-content h3 {
+            color: #1b3b73;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-weight: 600;
+            text-shadow: 1px 1px 5px rgba(27, 59, 115, 0.2);
+        }
+
+        .latest-content p {
+            margin-bottom: 16px;
+            text-align: justify;
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Updated for full image display */
+        .latest-content .fit-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            object-fit: contain; /* Ensure full image display without cropping */
+        }
+
+        .author-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 15px;
+            font-style: italic;
+            color: #444;
+        }
+
+        .author-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px; /* Keeps the photo left-aligned */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .author-info {
+            margin-top: 10px; /* Space between the image and text */
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 300px;
+            height: 100%;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+            transition: right 0.3s ease;
+            z-index: 1000;
+            border-left: 3px solid #1b3b73;
+            border-radius: 10px 0 0 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .sidebar.open {
+            right: 0;
+        }
+
+        .sidebar .volume {
+            margin-top: 10px;
+        }
+
+        .past-entries-container {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .toggle-sidebar {
+            background-color: #1b3b73;
+            border: none;
+            cursor: pointer;
+            z-index: 1100;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: #ffffff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .toggle-sidebar:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .volume-header {
+            font-size: 1.1em;
+            cursor: pointer;
+            background-color: #f8f9fb;
+            color: #1b3b73;
+            padding: 12px 15px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #cfd8dc;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+
+        .volume-header:hover,
+        .volume-header.active {
+            background-color: #e3f2fd;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            transform: scale(1.02);
+        }
+
+        .volume-content {
+            display: none;
+            padding-left: 0;
+            margin-top: 5px;
+        }
+
+        .volume-content.active {
+            display: block;
+        }
+
+        .volume-content a {
+            color: #1b3b73;
+            text-decoration: none;
+            padding: 8px 12px;
+            display: block;
+            border-radius: 5px;
+            margin-top: 5px;
+            border: 1px solid #cfd8dc;
+            background-color: #ffffff;
+            transition: background-color 0.3s, transform 0.3s;
+            font-weight: 500;
+        }
+
+        .volume-content a:hover {
+            background-color: #f1f1f1;
+            transform: translateX(5px);
+        }
+
+        .quiz-section {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px auto;
+            max-width: 800px;
+            border: 2px solid #1b3b73;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+            font-style: italic;
+            color: #123157;
+        }
+
+        .quiz-button {
+            background-color: #1b3b73;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            font-size: 1em;
+            font-weight: bold;
+            display: inline-block;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s infinite;
+        }
+
+        .quiz-button:hover {
+            background-color: #123157;
+            transform: scale(1.05);
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(27, 59, 115, 0.7);
+            }
+
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(27, 59, 115, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(27, 59, 115, 0);
+            }
+        }
+
+        .insights-section {
+            background-color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            color: #1b3b73;
+            margin-top: 20px;
+            border-top: 2px solid #1b3b73;
+            box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .footer {
+            background-color: #1b3b73;
+            padding: 20px 0;
+            text-align: center;
+            color: #ffffff;
+            margin-top: 20px;
+            border-top: 4px solid #123157;
+            box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer p {
+            font-size: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+                margin-right: 0;
+            }
+
+            .latest-content {
+                margin-right: 0;
+                padding: 15px;
+            }
+
+            .author-photo {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .header p {
+                font-size: 0.9em;
+            }
+
+            .latest-content {
+                padding: 10px;
+            }
+
+            .quiz-section {
+                padding: 10px;
+                margin: 10px auto;
+            }
+
+            .quiz-button {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+
+            .insights-section {
+                padding: 10px;
+            }
+
+            .insights-section button.toggle-sidebar {
+                font-size: 14px;
+                padding: 8px 15px;
+                border-radius: 18px;
+            }
+
+            .footer {
+                padding: 20px;
+                text-align: center;
+            }
+
+            .past-entries-container {
+                right: 5px;
+                top: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo-container">
+        <img src="{% static 'images/BLUE.png' %}" alt="Logo">
+    </div>
+
+    <div class="header">
+        <h1>Welcome to Wisdom Wednesday!</h1>
+        <p>Unlock your path to ongoing learning and development. Delve into our weekly insights, discover cutting-edge tools and tech</p>
+    </div>
+
+    <div class="past-entries-container">
+        <button class="toggle-sidebar" onclick="toggleSidebar()">Past Entries</button>
+    </div>
+
+    <div class="main-content">
+        <div class="latest-content">
+            <div class="blog-entry">
+                <h3>{{ latest_blog.title }}</h3>
+
+                <p>{{ latest_blog.content|safe }}</p>
+
+                {% if latest_blog.image %}
+                <img src="{{ latest_blog.image.url }}" alt="{{ latest_blog.title }}" class="fit-image">
+                {% endif %}
+
+                {% if latest_blog.additional_content %}
+                <p>{{ latest_blog.additional_content|safe }}</p>
+                {% endif %}
+
+                {% if latest_blog.additional_image %}
+                <img src="{{ latest_blog.additional_image.url }}" alt="Additional Image" class="fit-image">
+                {% endif %}
+
+                {% if latest_blog.author_photo %}
+                <div class="author-section">
+                    <img src="{{ latest_blog.author_photo.url }}" alt="{{ latest_blog.author }}" class="author-photo">
+                    <div class="author-info">
+                        <p>Author: {{ latest_blog.author }}</p>
+                        <p>Published on: {{ latest_blog.published_date }}</p>
+                    </div>
+                </div>
+                {% else %}
+                <p>Author: {{ latest_blog.author }}</p>
+                <p>Published on: {{ latest_blog.published_date }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="quiz-section">
+        <p>You've now reviewed the materials in our Knowledge Center. To assess your understanding and retention of the key concepts, please take a few moments to complete the quiz.</p>
+        <a href="{% url 'quiz' %}" class="quiz-button">Go to Quiz</a>
+    </div>
+
+    <div class="insights-section">
+        <p>Explore more insights and knowledge from our past entries.</p>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 All rights reserved with Learnfluence Private Limited</p>
+    </div>
+
+    <div class="sidebar">
+        <!-- Volume section -->
+        {% for volume in volumes %}
+        <div class="volume">
+            <div class="volume-header">
+                Volume {{ volume.volume }}
+                <span>▼</span>
+            </div>
+            <div class="volume-content">
+                {% for blog in historical_blogs %}
+                {% if blog.volume == volume.volume %}
+                <a href="{% url 'blog_detail' blog.id %}">{{ blog.title }} (Part {{ blog.part }})</a>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebar = document.querySelector('.sidebar');
+            const volumeHeaders = document.querySelectorAll('.volume-header');
+
+            volumeHeaders.forEach(header => {
+                header.addEventListener('click', function () {
+                    this.classList.toggle('active');
+                    const content = this.nextElementSibling;
+                    content.classList.toggle('active');
+                });
+            });
+        });
+
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('open');
+        }
+    </script>
+</body>
+
+</html>

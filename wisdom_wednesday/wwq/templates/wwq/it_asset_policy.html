@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Asset Policy</title>
+    {% load static %}
+    <!-- Include Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: #000000;
+            background-color: white;
+        }
+        h1 {
+            font-weight: 700;
+            color: #002147;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        p {
+            line-height: 1.6;
+            font-weight: 400;
+            margin: 0 0 20px 0;
+            font-size: 1rem;
+        }
+        .content {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #002147;
+            margin-top: 30px;
+            font-size: 1.25rem;
+        }
+        .back-to-home {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .back-to-home a {
+            color: #0066cc;
+            text-decoration: none;
+            border: 1px solid #0066cc;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: 500;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .back-to-home a:hover {
+            background-color: #0066cc;
+            color: white;
+        }
+        header {
+            background-color: white;
+            padding: 20px 0;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo-container img {
+            height: 60px;
+        }
+        footer {
+            background-color: #002147;
+            padding: 20px 0;
+            text-align: center;
+            color: white;
+        }
+
+        /* Mobile Responsive Adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.75rem;
+            }
+            .content {
+                padding: 0 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            p {
+                font-size: 0.9rem;
+            }
+            .content {
+                padding: 0 10px;
+            }
+            .back-to-home a {
+                width: 100%;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <img src="{% static 'images/BLUE.png' %}" alt="Lakshya Logo">
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="content">
+        <!-- Heading -->
+        <h1>IT Asset Handling Policy</h1>
+
+        <!-- Policy Sections -->
+        <p class="section-title">1. Purpose:</p>
+        <p>This policy outlines the guidelines and procedures for the appropriate handling, use, and management of IT assets by the employees. The purpose of this policy is to ensure the security, efficiency, and longevity of the organization's IT resources.</p>
+
+        <p class="section-title">2. Scope:</p>
+        <p>This policy applies to all employees, contractors, consultants, and other individuals who have access to IIC Lakshya’s IT assets, including but not limited to computers, laptops, mobile devices, software, and data.</p>
+
+        <p class="section-title">3. Responsibilities:</p>
+        <p>- Employees are responsible for the proper use and care of IT assets assigned to them.<br>
+           - Employees must adhere to all guidelines and procedures outlined in this policy.<br>
+           - Any concerns or issues regarding IT assets should be reported to the IT department promptly.</p>
+
+        <p class="section-title">4. Asset Usage:</p>
+        <p>- IT assets provided by the company are for business use only. Personal use is permitted within reason and should not interfere with work responsibilities.<br>
+           - Employees must not install unauthorized software, download illegal content, or engage in any activities that may compromise the security or integrity of IT assets.</p>
+
+        <p class="section-title">5. Security Measures:</p>
+        <p>- Employees are required to use strong passwords and keep them confidential.<br>
+           - Devices must be locked when not in use, and screensavers with password protection must be enabled.<br>
+           - Employees must not share their login credentials or access privileges with others.<br>
+           - Any suspected security breaches or incidents should be reported immediately to the IT department.</p>
+
+        <p class="section-title">6. Data Handling:</p>
+        <p>- Employees must follow data protection guidelines and handle sensitive information with care.<br>
+           - Data should be stored on approved company systems and not on personal devices or cloud services.<br>
+           - Confidential or proprietary information must not be shared with unauthorized individuals or third parties.</p>
+
+        <p class="section-title">7. Asset Maintenance:</p>
+        <p>- Employees should report any malfunctioning or damaged IT assets to the IT department for repair or replacement.<br>
+           - Regular software updates and security patches should be installed promptly to ensure the security and performance of IT assets.</p>
+
+        <p class="section-title">8. Asset Disposal:</p>
+        <p>- When IT assets reach the end of their lifecycle or are no longer needed, employees must return them to the IT department for proper disposal.</p>
+
+        <p class="section-title">9. Compliance:</p>
+        <p>- Employees must comply with all applicable laws, regulations, and company policies regarding IT asset usage.<br>
+           - Any violations of this policy may result in disciplinary action, up to and including termination of employment.</p>
+
+        <p class="section-title">10. Training and Awareness:</p>
+        <p>- Employees will receive training on IT asset handling policies and procedures upon joining the company and regularly thereafter.<br>
+           - Employees are encouraged to stay informed about updates to IT policies and best practices through ongoing training and communication channels.</p>
+
+        <p class="section-title">11. Policy Review:</p>
+        <p>- This policy will be reviewed periodically by the IT department to ensure its effectiveness and relevance.<br>
+           - Any updates or revisions to the policy will be communicated to employees in a timely manner.</p>
+
+        <!-- Back to Home Button -->
+        <div class="back-to-home">
+            <a href="javascript:void(0);" onclick="goBack()">Back</a>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2024 All rights reserved with Learnfluence Private Limited</p>
+    </footer>
+
+    <!-- JavaScript to Handle Back Button -->
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

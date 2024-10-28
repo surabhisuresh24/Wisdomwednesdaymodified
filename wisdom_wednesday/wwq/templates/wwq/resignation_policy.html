@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resignation Policy</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            color: #000;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+        }
+        .header img {
+            max-width: 150px;
+        }
+        .content {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            line-height: 1.8;
+        }
+        h1 {
+            text-align: center;
+            color: #002147;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+        p, ol, ul {
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        ol {
+            padding-left: 20px;
+        }
+        ol li {
+            margin-bottom: 15px;
+        }
+        ul {
+            margin-left: 20px;
+            list-style-type: disc;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        .back-button {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .back-button button {
+            color: #0066cc;
+            border: 1px solid #0066cc;
+            padding: 12px 24px;
+            border-radius: 5px;
+            background-color: transparent;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .back-button button:hover {
+            background-color: #0066cc;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="{% static 'images/BLUE.png' %}" alt="Lakshya Logo">
+    </div>
+
+    <div class="content">
+        <h1>Resignation Policy</h1>
+        <p>The general procedure that needs to be followed for a Resignation:</p>
+        <ol>
+            <li><strong>Prepare a Resignation Letter:</strong> Send an email to your immediate supervisor or manager, keeping HRD in the loop, expressing your intention to resign and your last day, keeping it brief and professional.</li>
+            <li><strong>Schedule a Meeting:</strong> Managers must arrange a private meeting with the resigned employee within two days of their resignation to talk about the reason for their resignation.</li>
+            <li><strong>Meeting Discussion:</strong> During the meeting, understand the reason for the resignation and try to retain the employee based on performance and team requirements.</li>
+            <li><strong>HRMS updating:</strong> Kindly apply your resignation through the HRMS portal on the day a resignation is sent through mail, which is mandatory, and the LWD will be counted only from the date of application from the HRMS portal even if the submission date is a backdated day.</li>
+            <li><strong>Decision:</strong> Once submitted and following a meeting, a decision on the HRMS application (Accepting or Rejecting) must be made within 2 days of submission. If no decision is made within this timeframe, the application will be automatically forwarded to the next level.</li>
+            <li><strong>Transition:</strong> Offer to assist with the transition process. This might include training your replacement, documenting your tasks, or helping to wrap up any ongoing projects.</li>
+            <li><strong>Inform HR:</strong> The reporting manager should notify the HR department and IT department of the resignation. They will help the HR and IT team to notify the employee about any paperwork and formalities.</li>
+            <li><strong>Work Notice Period:</strong> It is mandatory for everyone to serve their notice period as per the employment contract. If leaves are taken during the notice period, the last working day will be extended.</li>
+            <ul>
+                <li>Employees in Probation: 15 days of Notice Period</li>
+                <li>Confirmed employee till Team Lead: 30 days of Notice Period</li>
+                <li>Assistant Managers: 60 days of Notice Period</li>
+                <li>Manager and Above: 90 days of Notice Period</li>
+            </ul>
+            <li><strong>No Due Documentation:</strong> They need to complete the No Due documentation, which will be given to the resigned employee by the HR team on their last working day.</li>
+        </ol>
+
+        <!-- Back Button -->
+        <div class="back-button">
+            <button onclick="goBack()">Go Back</button>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

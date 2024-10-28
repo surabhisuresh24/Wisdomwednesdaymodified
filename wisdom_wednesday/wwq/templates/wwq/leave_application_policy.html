@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Application Policy</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            color: #000;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+        }
+        .header img {
+            max-width: 150px;
+        }
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #002147;
+            margin-bottom: 20px;
+        }
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        .back-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .back-button button {
+            color: #0066cc;
+            text-decoration: none;
+            border: 1px solid #0066cc;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: transparent;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+        }
+        .back-button button:hover {
+            background-color: #0066cc;
+            color: white; /* Change text color to white when hovered */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="{% static 'images/BLUE.png' %}" alt="Lakshya Logo">
+    </div>
+
+    <div class="content">
+        <h1>Leave Application Policy</h1>
+        <p>When applying for leave, employees typically follow a set procedure outlined by their company’s policies. Here’s a general procedure that many organizations might follow:</p>
+
+        <p><strong>1. Review Company Policies:</strong> Before applying for leave, employees should familiarize themselves with their company’s leave policies. This includes understanding the types of leave available (e.g., Casual Leave, Sick leave, Earned leave), eligibility criteria, and any specific procedures for applying for leave.</p>
+
+        <p><strong>2. Check Leave Balance:</strong> Employees should check their remaining leave balance to ensure they have sufficient leave available for the requested time off. This information is often accessible through the GreytHR Portal.</p>
+
+        <p><strong>3. Dates:</strong> Determine the dates for the leave period, taking into account personal preferences, workload, project deadlines, and any other relevant factors.</p>
+
+        <p><strong>4. Submit Request:</strong> Use the designated method for requesting leave, by calling and informing the leader and simultaneously applying the leave through GreytHR. Provide the requested dates, type of leave, and any additional information or the reason for the leave.</p>
+
+        <ul>
+            <li><strong>Planned Leave:</strong> Planned leave or Vacation Leave should be intimated to your reporting manager with the leave date at least 15 days prior, which will allow time for managers to review the request and make necessary arrangements in your absence.</li>
+            <li><strong>Sick / Emergency Leave:</strong> In case of Sick or Emergency leave, you should intimate your reporting Managers in the morning. In case if you are not in a condition to inform your managers, ask any of your family members to do the same.</li>
+        </ul>
+
+        <p><strong>5. Await Approval:</strong> For Planned leaves after submitting the leave request, employees should wait for approval from their manager or the HR department. The approval process may involve reviewing staffing levels, workload, and any potential impacts on operations.</p>
+
+        <p><strong>6. Receive Confirmation:</strong> Once the leave request is approved, employees should receive confirmation of the approved leave dates, either through email or through the GreytHR portal.</p>
+
+        <p><strong>7. Out of Office:</strong> Employees should set and Out of Office to inform others that you are unavailable and who is the point of contact in your absence.</p>
+
+        <p><strong>8. Arrange Handover (if necessary):</strong> If the leave period will impact ongoing projects or responsibilities, employees should arrange for a smooth handover of tasks to colleagues or designate a point of contact for any urgent matters during their absence.</p>
+
+        <p><strong>9. Loss of Pay (LOP):</strong> The following categories are considered as LOP:</p>
+        <ul>
+            <li>Taking leave without having leave balance</li>
+            <li>Taking leave without manager's approval / Declining the leave</li>
+            <li>Extending leave beyond the allowed period</li>
+        </ul>
+
+        <!-- Back Button -->
+        <div class="back-button">
+            <button onclick="goBack()">Go Back</button>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

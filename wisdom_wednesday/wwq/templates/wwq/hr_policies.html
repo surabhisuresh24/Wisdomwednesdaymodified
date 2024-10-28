@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Policies</title>
+    {% load static %}
+    <!-- Include Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: #000000;
+            background-color: white;
+        }
+        h1 {
+            font-weight: 700;
+            color: #002147;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        p {
+            line-height: 1.6;
+            font-weight: 400;
+            margin: 0 0 20px 0;
+            text-align: justify; /* Justify text for better alignment */
+        }
+        .content {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+        .flex-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
+        }
+        .flex-container img {
+            max-width: 40%;
+            height: auto;
+            margin-right: 20px;
+            border-radius: 10px;
+        }
+        .text-container {
+            flex: 1;
+        }
+        .back-to-home {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .back-to-home a {
+            color: #0066cc;
+            text-decoration: none;
+            border: 1px solid #0066cc;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: 500;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .back-to-home a:hover {
+            background-color: #0066cc;
+            color: white;
+        }
+        header {
+            background-color: white;
+            padding: 20px 0;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 10px;
+        }
+        .logo-container img {
+            height: auto;
+            width: 100%;
+            max-width: 300px; /* Set max-width to ensure it fits well on mobile */
+        }
+        /* Side Navigation Menu */
+        .side-nav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            background-color: #004a7c;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .side-nav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .side-nav a:hover {
+            background-color: #0066cc;
+        }
+
+        .side-nav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #002147;
+            padding: 20px 0;
+            text-align: center; /* Center the footer content */
+            width: 100%; /* Ensure footer spans full width */
+            box-sizing: border-box; /* Include padding in width calculation */
+        }
+        footer p {
+            margin: 0;
+            color: white;
+            text-align: center; /* Ensure the text is centered */
+            width: 100%; /* Make sure the text spans the full width of the footer */
+        }
+
+        /* Media Queries for Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .logo-container {
+                justify-content: flex-start; /* Align logo to the left */
+                position: relative;
+            }
+            .logo-container img {
+                max-width: 250px; /* Keep the logo size consistent */
+            }
+            .logo-container button {
+                position: absolute;
+                top: 0;
+                right: 0;
+                transform: translate(-10%, 20%); /* Move the button to the top right */
+            }
+            .flex-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .flex-container img {
+                max-width: 90%; /* Increase image size */
+                margin: 0 auto 20px auto;
+            }
+            .text-container {
+                margin: 0;
+            }
+            .back-to-home a {
+                width: 100%;
+                box-sizing: border-box;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .back-to-home a {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+            .side-nav a {
+                font-size: 16px;
+            }
+            h1 {
+                font-size: 26px; /* Increase font size for the title */
+            }
+            p {
+                font-size: 16px; /* Increase font size for paragraphs */
+            }
+            .flex-container img {
+                max-width: 100%; /* Further increase image size */
+            }
+            .logo-container {
+                flex-direction: row; /* Align logo to the left and button to the right */
+            }
+            .logo-container img {
+                max-width: 250px; /* Keep the logo size consistent */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <img src="{% static 'images/BLUE.png' %}" alt="Lakshya Logo">
+            <button onclick="openNav()" style="background-color: #004a7c; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-weight: 600;">
+                Policies <span style="margin-left: 5px;">&#9662;</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Side Navigation -->
+    <div id="mySidenav" class="side-nav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="{% url 'leave_application_policy' %}">Leave Application Policy</a>
+        <a href="{% url 'resignation_policy' %}">Resignation Policy</a>
+        <a href="{% url 'uae_policy' %}">UAE Policy</a> <!-- Updated UAE Policy link -->
+        <a href="{% url 'dress_code' %}">Dress Code</a> <!-- Added Dress Code link -->
+    </div>
+
+    <!-- Main Content -->
+    <main class="content">
+        <!-- Heading -->
+        <h1>HR Policies</h1>
+
+        <!-- Flex Container with Image and Paragraphs -->
+        <div class="flex-container">
+            <img src="{% static 'images/hr.jpg' %}" alt="HR Image">
+            <div class="text-container">
+                <p>At Lakshya, our Human Resources (HR) policies are the cornerstone of a positive and productive work environment. These policies are designed to ensure fairness, consistency, and respect in all interactions within our organization. Every employee is expected to understand and adhere to these guidelines, which cover key aspects such as workplace conduct, employee benefits, performance management, and grievance procedures. By following these policies, we strive to maintain a safe, inclusive, and empowering environment for all our employees.</p>
+                <p>The HR Department at Lakshya is dedicated to supporting our employees and fostering a culture of growth and development. We are here to assist with any concerns related to your employment, whether it's understanding your benefits, navigating workplace challenges, or seeking career advancement. Our team works diligently to ensure that our HR policies are up-to-date and in alignment with both legal requirements and the evolving needs of our workforce. We are committed to creating an environment where every employee feels valued, supported, and equipped to succeed.</p>
+            </div>
+        </div>
+
+        <!-- Back to Home Button -->
+        <div class="back-to-home">
+            <a href="javascript:void(0);" onclick="goBack()">Back</a>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2024 All rights reserved with Learnfluence Private Limited</p>
+    </footer>
+
+    <!-- JavaScript to Handle Side Navigation and Back Button -->
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

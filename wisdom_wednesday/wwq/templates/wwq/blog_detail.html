@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ blog.title }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        /* General Styles */
+        body {
+            background-color: #f5f7fa; /* Light grey background */
+            color: #000000; /* Black text */
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px 30px;
+            background-color: #ffffff; /* White background */
+            border-bottom: 1px solid #e0e0e0; /* Light grey bottom border */
+            position: fixed; /* Fixed position to freeze it at the top */
+            top: 0; /* Stick to the top of the page */
+            left: 0; /* Stick to the left side */
+            right: 0; /* Stick to the right side */
+            z-index: 1000; /* Ensure it's on top of the content */
+        }
+
+        .logo-container img {
+            height: 60px; /* Set logo height */
+            width: auto; /* Maintain aspect ratio */
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffffff; /* White background */
+            color: #1b3b73; /* Navy blue text color */
+            margin-top: 80px; /* Add margin to account for the fixed header height */
+        }
+
+        .content {
+            padding: 30px;
+            max-width: 1200px; /* Increased width to 1200px */
+            margin: 0 auto;
+            background-color: #ffffff; /* White background */
+            color: #1b3b73; /* Navy blue for text */
+            border: 1px solid #e0e0e0; /* Light grey border */
+            border-radius: 8px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+            margin-top: 30px;
+        }
+
+        .content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for images */
+        }
+
+        .go-back-button {
+            display: block;
+            text-align: center;
+            margin: 30px auto;
+            padding: 12px 28px;
+            background-color: #1b3b73; /* Navy blue background */
+            color: #ffffff; /* White text */
+            border-radius: 8px; /* Slightly rounded button */
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            width: fit-content;
+        }
+
+        .go-back-button:hover {
+            background-color: #123157; /* Slightly darker blue on hover */
+            transform: scale(1.05); /* Scale effect on hover */
+        }
+
+        .footer {
+            background-color: #1b3b73; /* Navy blue background */
+            padding: 20px 0;
+            text-align: center;
+            color: #ffffff; /* White text */
+            margin-top: 30px; /* Separate the footer from the content */
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* Author Details with Photo */
+        .author-details {
+            display: flex;
+            align-items: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd; /* Divider above author details */
+        }
+
+        .author-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for the photo */
+        }
+
+        .author-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .author-info p {
+            margin: 0;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 20px;
+                max-width: 100%; /* Allow full-width on smaller screens */
+            }
+
+            .footer {
+                padding: 20px;
+                text-align: center;
+            }
+
+            .go-back-button {
+                padding: 12px 24px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+
+            .content {
+                padding: 15px;
+            }
+
+            .footer {
+                padding: 20px;
+                text-align: center;
+            }
+
+            .go-back-button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo-container">
+        <img src="{% static 'images/BLUE.png' %}" alt="Logo">
+    </div>
+
+    <div class="header">
+        <h1>{{ blog.title }}</h1>
+    </div>
+
+    <div class="content">
+        <!-- Display the main content with the 'safe' filter -->
+        <p>{{ blog.content|safe }}</p>
+
+        <!-- Then display the main image -->
+        {% if blog.image %}
+        <img src="{{ blog.image.url }}" alt="{{ blog.title }}">
+        {% endif %}
+
+        <!-- Then display the additional content with the 'safe' filter -->
+        {% if blog.additional_content %}
+        <p>{{ blog.additional_content|safe }}</p>
+        {% endif %}
+
+        <!-- Finally, display the additional image -->
+        {% if blog.additional_image %}
+        <img src="{{ blog.additional_image.url }}" alt="Additional Image">
+        {% endif %}
+
+        <!-- Author, Photo, and Published Date -->
+        <div class="author-details">
+            {% if blog.author_photo %}
+            <img src="{{ blog.author_photo.url }}" alt="{{ blog.author }}" class="author-photo">
+            {% endif %}
+            <div class="author-info">
+                <p>Author: {{ blog.author }}</p>
+                <p>Published on: {{ blog.published_date }}</p>
+            </div>
+        </div>
+
+        <p>Week: {{ blog.week }}</p>
+    </div>
+
+    <a href="{% url 'blog' %}" class="go-back-button">Go Back</a>
+
+    <div class="footer">
+        <p>© 2024 All rights reserved with Learnfluence Private Limited</p>
+    </div>
+</body>
+
+</html>

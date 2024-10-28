@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAE Policy</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            color: #000;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+        }
+        .header img {
+            max-width: 150px;
+        }
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #002147;
+            margin-bottom: 20px;
+        }
+        p, ul {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        .back-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .back-button button {
+            color: #0066cc;
+            text-decoration: none;
+            border: 1px solid #0066cc;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: transparent;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .back-button button:hover {
+            background-color: #0066cc;
+            color: white;
+        }
+        .signature-seal-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 40px; /* Space between text and the images */
+        }
+        .signature, .seal {
+            max-width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="{% static 'images/BLUE.png' %}" alt="Lakshya Logo">
+    </div>
+
+    <div class="content">
+        <h1>UAE Policy</h1>
+        <p><strong>Code of Conduct:</strong></p>
+        <ul>
+            <li>It is mandatory to punch-in when you arrive at the office and punch-out when you leave from the office, failure to do the same may affect your salary.</li>
+            <li>Late to work or leaving early by 5 min or more during the same month shall grant an unpaid half-day leave every time after the 3rd instance.</li>
+            <li>Any leave taken should be informed and approved well in advance to your reporting leader, failure to which may result in LOP.</li>
+            <li>It is mandatory to wear an ID card in office premises.</li>
+            <li>Sick Leave (SL) should be applied early morning or within 24 hours from the date you availed it.</li>
+            <li>Any emergency or unavoidable leave taken should be applied early morning on the same day.</li>
+        </ul>
+        <p><strong>Dress Code:</strong></p>
+        <ul>
+            <li>Employees are expected to dress in Business Formals/Uniforms including formal footwear from Tuesday to Sunday.</li>
+            <li>Employees must always be present in a clean, professional appearance with well-groomed and clean clothes.</li>
+            <li>Revealing clothing and any other inappropriate attire are not allowed.</li>
+            <li>On Mondays, “Business Casual” is allowed.</li>
+        </ul>
+        <p><strong>Non-Discrimination and Harassment:</strong></p>
+        <ul>
+            <li>We prohibit discrimination, harassment, and retaliation based on race, color, religion, gender, sexual orientation, disability, or any other protected characteristic.</li>
+        </ul>
+        <p><strong>Use of Company Resources:</strong></p>
+        <ul>
+            <li>Employees must use company assets, resources, and facilities responsibly and for legitimate business purposes only.</li>
+            <li>Keep your laptop locked when not on desk and use.</li>
+            <li>Don't break or spoil the company asset, failure to which may be recovered from your salary.</li>
+        </ul>
+        <p><strong>Professionalism:</strong></p>
+        <ul>
+            <li>Encourages clear, concise, and respectful communication in all forms. This involves using appropriate language, tone, and professionalism in emails, meetings, presentations, and other interactions.</li>
+        </ul>
+        <p><strong>Consequences of Violations:</strong></p>
+        <ul>
+            <li>Specifies the consequences of violating the company policy, which may include disciplinary actions up to and including termination of employment, depending on the severity of the infraction.</li>
+        </ul>
+        <p><strong>Continuous Improvement:</strong></p>
+        <ul>
+            <li>The policy will be regularly reviewed and updated to address emerging issues, changes in laws or regulations, and feedback from employees and stakeholders.</li>
+        </ul>
+        <p><strong>Type of Leave Policy:</strong></p>
+        <ul>
+            <li>Sick leave</li>
+            <li>Annual Leave</li>
+            <li>Maternity Leave & Paternity Leaves</li>
+            <li>UAE Public Holidays 2024</li>
+        </ul>
+        <p><strong>Sick Leave:</strong></p>
+        <ul>
+            <li>During the Probationary Period, the employee may get a sick leave without pay, subject to the approval of the employer and based on a medical report issued by the medical entity that stipulates the necessity of the leave.</li>
+            <li>Employees who completed Probation can avail 3 days of sick leave in a year without any documentation. On additional sick leaves, it will be approved by Reporting Manager & HR post reviewing the Sick Leave Certificate issued by a certified medical practitioner under Dubai Health Regulation.</li>
+        </ul>
+        <p><strong>Annual Leave:</strong></p>
+        <ul>
+            <li>Employees are entitled to a fully paid annual leave of 30 days if they have completed one year of service. Employees must use their leaves in the year of entitlement.</li>
+            <li>Upon completing 6 months with the organization, an employee becomes eligible for a leave of up to 2 days with prior management approval, which will be deducted from their annual leave balance.</li>
+            <li>Upon completing one year with the organization, the employee is required to take their annual leave within the first 6 months of the subsequent year.</li>
+            <li>The employer may, in agreement with the employee, set the dates of leave according to the work requirements. Employers must notify the employee of the date of the leave at least one month in advance.</li>
+        </ul>
+        <p><strong>Maternity Leave & Paternity Leave:</strong></p>
+        <ul>
+            <li>All employees will be eligible for maternity or paternity leave as per local UAE regulations and company standards.</li>
+        </ul>
+        <p><strong>UAE Public Holidays:</strong></p>
+        <ul>
+            <li>As per the UAE government's list of public holidays. The public holiday list of the UAE may change in accordance with the UAE government's announcements.</li>
+        </ul>
+
+        <!-- Signature and Seal -->
+        <div class="signature-seal-container">
+            <img src="{% static 'images/sign.png' %}" alt="Signature" class="signature">
+            <img src="{% static 'images/seal.png' %}" alt="Seal" class="seal">
+        </div>
+
+        <!-- Back Button -->
+        <div class="back-button">
+            <button onclick="goBack()">Go Back</button>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

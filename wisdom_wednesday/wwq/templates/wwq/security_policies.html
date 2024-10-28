@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Policies</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: white;
+            color: #1f2d3d;
+        }
+        h1 {
+            font-weight: 700;
+            color: #002147;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        h2 {
+            font-weight: 700;
+            color: #002147;
+            font-size: 1.5rem;
+            margin-top: 30px;
+        }
+        p {
+            line-height: 1.6;
+            font-weight: 400;
+            margin: 0 0 20px 0;
+            font-size: 1rem;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin: 20px 0;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        .content {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+        .back-to-home {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .back-to-home a {
+            color: #0066cc;
+            text-decoration: none;
+            border: 1px solid #0066cc;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: 500;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .back-to-home a:hover {
+            background-color: #0066cc;
+            color: white;
+        }
+        header {
+            background-color: white;
+            padding: 20px 0;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo-container img {
+            height: 60px;
+        }
+        /* Footer Section */
+        footer {
+            background-color: #002147;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <img src="{% static 'images/BLUE.png' %}" alt="Lakshya Logo">
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="content">
+        <!-- Heading -->
+        <h1>Security Policies</h1>
+        <div class="text-container">
+            <p>As part of our ongoing commitment to maintaining a secure and safe working environment, we are implementing a set of updated security policies and guidelines. These measures are designed to protect our company's data, systems, and assets, as well as to ensure compliance with industry regulations and best practices.</p>
+
+            <h2>1. Password Management:</h2>
+            <ul>
+                <li>Use strong, unique passwords for all company accounts.</li>
+                <li>Change your passwords regularly, at least every 90 days.</li>
+                <li>Do not share your passwords with anyone.</li>
+            </ul>
+
+            <h2>2. Email Security:</h2>
+            <ul>
+                <li>Be vigilant about phishing attempts. Do not open attachments or click on links from unknown or suspicious sources.</li>
+                <li>Report any suspicious emails to the IT department immediately.</li>
+            </ul>
+
+            <h2>3. Device Security:</h2>
+            <ul>
+                <li>Ensure that all company devices are password-protected and locked when not at your desk.</li>
+                <li>Use only approved software and applications on company devices.</li>
+                <li>Report any lost or stolen devices to the IT department immediately.</li>
+            </ul>
+
+            <h2>4. Data Protection:</h2>
+            <ul>
+                <li>Store sensitive data in secure, approved locations.</li>
+                <li>Do not use personal email accounts or cloud storage services for company data.</li>
+            </ul>
+
+            <h2>5. Network Security:</h2>
+            <p>Avoid using public Wi-Fi to access company resources.</p>
+
+            <h2>6. Physical Security:</h2>
+            <p>Ensure that your workstation is secure and that sensitive information is not left visible when unattended.</p>
+
+            <h2>7. Incident Reporting:</h2>
+            <p>Immediately report any security incidents, breaches, or suspicious activities to the IT department.</p>
+
+            <h2>Training and Resources:</h2>
+            <p>We will be conducting mandatory security training sessions to ensure that everyone is familiar with these policies and understands how to implement them effectively. Additional resources, including detailed policy documents, will be available on the company intranet.</p>
+
+            <h2>Compliance:</h2>
+            <p>Adhering to these security policies is critical to our collective success and safety. Non-compliance with these policies can lead to disciplinary actions.</p>
+
+            <h2>Questions and Support:</h2>
+            <p>If you have any questions or need further clarification regarding these policies, please do not hesitate to contact the IT department.</p>
+
+            <p>Thank you for your attention to this important matter and for your cooperation in helping us maintain a secure and safe working environment.</p>
+        </div>
+
+        <!-- Back to Home Button -->
+        <div class="back-to-home">
+            <a href="javascript:void(0);" onclick="goBack()">Back</a>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2024 All rights reserved with Learnfluence Private Limited</p>
+    </footer>
+
+    <!-- JavaScript to Handle Back Button -->
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

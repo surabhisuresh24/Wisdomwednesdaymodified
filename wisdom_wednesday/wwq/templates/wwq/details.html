@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Your Details</title>
+    {% load static %}
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS Variables */
+        :root {
+            --primary-color: #01508C;
+            --secondary-color: #FFC814;
+            --light-blue-color: #E9F7FF;
+        }
+        /* General Styles */
+        body {
+            background-color: #F8F8F8;
+            color: #333;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            position: relative;
+        }
+        .welcome-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: var(--light-blue-color);
+            flex-direction: column;
+            text-align: center;
+        }
+        .welcome-message h1 {
+            font-size: 3em;
+            font-weight: bolder;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: inline-block;
+            position: relative;
+            animation: floatDown 1s ease-in-out forwards, jumpLetters 0.5s 1s forwards;
+        }
+        .welcome-message .highlight {
+            color: var(--secondary-color);
+        }
+        /* Floating down animation */
+        @keyframes floatDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Jumping letters animation */
+        @keyframes jumpLetters {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            transition: transform 2s ease-in-out, opacity 2s ease-in-out;
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+        }
+        .login-container.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .login-box {
+            display: flex;
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 1000px;
+            max-width: 90%;
+            position: relative;
+        }
+        .login-image img {
+            width: 500px;
+            height: auto;
+            margin-right: 30px;
+        }
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-grow: 1;
+            max-width: 400px;
+        }
+        .logo img {
+            width: 200px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        .form-group label {
+            font-size: 1.2em;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            display: block;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            color: #333;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 8px rgba(255, 200, 20, 0.5);
+        }
+        .submit-button {
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 10px;
+            width: auto;
+            align-self: flex-start;
+        }
+        .submit-button:hover {
+            background-color: #0616FF;
+            transform: scale(1.05);
+            color: #FFFFFF;
+        }
+        @media (max-width: 768px) {
+            .login-box {
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+                width: 100%;
+            }
+            .login-image img {
+                margin: 0 0 20px 0;
+                width: 250px;
+            }
+            .welcome-message h1 {
+                font-size: 2em;
+            }
+            .login-form {
+                max-width: 100%;
+            }
+            .submit-button {
+                width: 100%;
+                align-self: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-section" id="welcomeSection">
+        <div class="welcome-message">
+            <h1>
+                Welcome to <span class="highlight">Wisdom Wednesday</span>
+            </h1>
+            <p>Step in and uncover new insights.</p>
+        </div>
+    </div>
+    <div class="login-container" id="loginContainer">
+        <div class="login-box">
+            <div class="login-image">
+                <img src="{% static 'images/read.jpg' %}" alt="Detail GIF">
+            </div>
+            <div class="login-form">
+                <div class="logo">
+                    <img src="{% static 'images/BLUE.png' %}" alt="Company Logo">
+                </div>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="id_name">Name</label>
+                        <input type="text" id="id_name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_employee_id">Employee ID</label>
+                        <div style="display: flex; align-items: center;">
+                            <input type="text" value="LA-IND-" readonly style="width: 100px; border-right: none;">
+                            <input type="text" id="id_employee_id" name="employee_id" placeholder="XXXX" required
+                                   style="flex-grow: 1; border-left: none;"
+                                   pattern="\d{4}"
+                                   inputmode="numeric"
+                                   oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 4);">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_department">Department</label>
+                        <select id="id_department" name="department" required>
+                            <option value="IT">IT</option>
+                            <option value="HR">HR</option>
+                            <option value="Finance">Finance</option>
+                            <option value="RM Finance">RM Finance</option>
+                            <option value="Academics">Academics</option>
+                            <option value="RM">RM</option>
+                            <option value="CC">CC</option>
+                            <option value="Online Operations">Online Operations</option>
+                            <option value="Admin">Admin</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="submit-button">Start Exploring</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript for Automatic Scrolling -->
+    <script>
+        window.onload = function() {
+            setTimeout(() => {
+                // Hide the welcome section and remove it from the DOM
+                const welcomeSection = document.getElementById('welcomeSection');
+                welcomeSection.classList.add('hidden');
+                setTimeout(() => {
+                    welcomeSection.remove();
+                }, 1000); // Delay removal to allow for fade out
+                // Show the login container with enhanced animation
+                const loginContainer = document.getElementById('loginContainer');
+                loginContainer.classList.add('visible');
+                // Scroll to the login container smoothly
+                window.scrollTo({
+                    top: document.querySelector('.login-container').offsetTop,
+                    behavior: 'smooth'
+                });
+            }, 2000); // 2-second transition time
+        };
+    </script>
+</body>
+</html>
